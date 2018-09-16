@@ -1,1 +1,40 @@
-dssd
+#!/usr/bin/env python
+
+import tweepy
+from tweepy import OAuthHandler
+import wget
+import json
+
+consumer_key = 'dEqh76HwX5U7hCIK2iIcxoxru'
+consumer_secret = '5K20dpFlGIkyKZjqGBEshKafHq39ac2ThARhe1Uf1gPLNIBJfx'
+access_token = '1041005266832121858-n8UPtUdnEHLAwZKaJYL22bR7v4DdFA'
+access_secret = 'ShaAqtOZnyeyoC7GEx8ewPSiFXmMM2irlPmPAOwCjBjlT'
+
+auth = OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_secret)
+api = tweepy.API(auth)
+
+
+tweets = api.user_timeline(screen_name='Snow37050087',count=20, include_rts=False,exclude_replies=True)
+last_id = tweets[-1].id
+
+while (True):
+    more_tweets = api.user_timeline(screen_name='Snow37050087',count=200,include_rts=False,exclude_replies=True,max_id=last_id-1)
+
+if (len(more_tweets) == 0):
+      break
+else:
+      last_id = more_tweets[-1].id-1
+      tweets = tweets + more_tweets
+
+
+media_files = set()
+for status in tweets:
+    media = status.entities.get('media', [])
+    if(len(media) > 0):
+        media_files.add(media[0]['media_url'])
+
+
+for media_file in media_files:
+    wget.download(media_file)
+
