@@ -31,6 +31,26 @@ else:
 words = ['cat', 'window', 'defenestrate']
 for w in words[:]:
      if len(w) > 6:
-         words.insert(0, w)
+         words.insert(0, w)  
+words=['defenestrate', 'cat', 'window', 'defenestrate'] 
+```   
+
+- for else  
+在for循环完整完成后才执行else；如果中途从break跳出，则连else一起跳出.   
+
+- range()  
+创建一个整数列表
+```python
+range(start, stop[, step]) (start 0, step 1)  
+r[i] = start + step*i,  i >= 0 and r[i] < stop.
+```
+- break,continue  
+continue跳过当前循环的剩余语句，然后继续进行下一轮循环，而break跳出整个循环  
+- 
+
+
+- str()
+返回给定的内容  [tutorial](https://www.programiz.com/python-programming/methods/built-in/str)
+```python
+str('object', encoding='utf-8', errors='strict')
 ```  
-words=['defenestrate', 'cat', 'window', 'defenestrate']
