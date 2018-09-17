@@ -5,10 +5,6 @@ import tweepy
 import json
 
 
-consumer_key = 'dEqh76HwX5U7hCIK2iIcxoxru'
-consumer_secret = '5K20dpFlGIkyKZjqGBEshKafHq39ac2ThARhe1Uf1gPLNIBJfx'
-access_token = '1041005266832121858-n8UPtUdnEHLAwZKaJYL22bR7v4DdFA'
-access_secret = 'ShaAqtOZnyeyoC7GEx8ewPSiFXmMM2irlPmPAOwCjBjlT'
 
 @classmethod
 def parse(cls, api, raw):
