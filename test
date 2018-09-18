@@ -1,33 +1,18 @@
 #!/usr/bin/python#
-import base64
-import wget
-from PIL import Image
+import os
+import io
+from google.cloud.vision import types
+from google.cloud import vision
 
-from google.cloud import vision_v1
+client = vision.ImageAnnotatorClient()
 
-client = vision_v1.ImageAnnotatorClient()
-
-file_name = '/home/lxy/GitHub/EC601-Project1/images/mini.jpg'
-with open(file_name, 'rb') as image:
-    image_content = image.read()
-    encoded_content = base64.b64encode(image_content)
-    #print (encoded_content)
-
-requests=[
-        {
-            "image":{
-                "content": encoded_content
-                },
-            "features":[
-                {
-                    "type":"FACE_DETECTION",
-                    "maxResults":10
-                    }
-                ]
-            }
-        ]
-
-#request =  {'image': {'content': encoded_content},}
-response = client.annotate_image(requests)
-print(response)
+file_name = os.path.join(os.path.dirname('/home/lxy/GitHub/EC601-Project1/images/mini.jpg'),'mini.jpg')
+with io.open(file_name, 'rb') as image:
+    content = image.read()
+pictures = types.Image(content = content)
+response = client.label_detection(image=pictures)
+labels = response.label_annotations
+print('Labels:')
+for label in labels:
+    print(label.description)
         
