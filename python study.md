@@ -4,7 +4,7 @@
      calculate the remainder：__%__  
      calculate the power: __**__
 3. string:both single and double quotes:&nbsp;__'', ""__  
-   string can be concatenated by using__*, +__. exp:3*'un'+'ium'is'unununium'
+   string can be concatenated by using __*, +__ . exp:3*'un'+'ium'is'unununium'  
    string can't be changed, if need a different, should create a new one  
    length of a string: __len()__  
 4. lists can be changed and concatenation  
