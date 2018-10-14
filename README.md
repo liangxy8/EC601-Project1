@@ -1,7 +1,8 @@
 # EC601-Project1
 ## how to run this Project
 1. Inpute your consumer_key, consumer_secret, access_key, access_secret in "tweepy".  
-2. run "run.sh" in the terminal and you will get a video combined with the images posted in tweets and the description of these images.
+2. run "run.sh" in the terminal and you will get a video combined with the images posted in tweets and the description of these images.  
+3. remember to change the file's storage path in "google_vision", when you run this code in your own computer.  
 ## some statements
 1. The function of "tweepy" is to download images from twitter feed.  
    The function of code "ffmpeg -i images/%d.jpg video.avi" is to convert images to a video.  
