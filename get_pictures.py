@@ -8,11 +8,10 @@ import argparse
 import os
 
   
-consumer_key = '..............'
-consumer_secret = '.............'
-access_token = '..............'
-access_secret = '...............'
-
+#consumer_key = '..............'
+#consumer_secret = '.............'
+#access_token = '..............'
+#access_secret = '...............'
 
 
 auth = OAuthHandler(consumer_key, consumer_secret)
@@ -49,6 +48,7 @@ def download_images_by_user(api, username, num_tweets, output_folder):
   status = tweepy.Cursor(api.user_timeline, screen_name=username, tweet_mode='extended').items()
   create_folder(output_folder)
   downloaded = 0
+  file = open("image_list.txt", 'w')
   for tweet_status in status:
       if(downloaded >= num_tweets):
           break
@@ -60,6 +60,9 @@ def download_images_by_user(api, username, num_tweets, output_folder):
               #wget.download(media_url +":orig", out=output_folder+'/'+file_name)
               wget.download(media_url, out=output_folder+'/'+file_name)
               downloaded += 1
+              #print(media_url)
+              file.write(str(media_url)+'\n')
+
 
 
 arguments = parse_arguments()
